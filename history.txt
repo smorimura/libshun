@@ -1,3 +1,5 @@
+2023/11/28	Version 1.0.2
+	・下の警告はCOM_OPT_ARG_SIZEとは関係がなかったため，255から256に戻した。
 2023/11/28	Version 1.0.1
 	・GCCの-Wstringop-truncation関係で警告が出るので，COM_OPT_ARG_SIZEの値を256から255に変更。
 2023/11/27	Version 1.0.0

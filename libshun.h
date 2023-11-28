@@ -7,7 +7,7 @@
 /*
  * definitions of constant number
  */
-#define COM_OPT_ARG_SIZE	255
+#define COM_OPT_ARG_SIZE	256
 
 /*
  * definition of boolean type
