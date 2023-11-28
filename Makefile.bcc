@@ -1,0 +1,50 @@
+CC = bcc32
+CFLAGS = -A -w -O2
+AR = tlib
+ARFLAGS =
+INSTALL = copy /-Y
+RM = del
+
+LIB_DIR = $(HOME)\lib
+INC_DIR = $(HOME)\include
+
+HEADER_NAME = libshun.h
+LIB_NAME    = libshun.lib
+
+RESPONSE_FILE = libshun.rsp
+
+#
+# add object filenames when adding new functions to this library
+#
+OBJS = getparam.obj isfile.obj isprefix.obj errexit.obj cutnline.obj getlabel.obj exp_tab.obj getcpath.obj strcpy.obj
+
+
+
+.c.obj:
+	$(CC) $(CFLAGS) -c $<
+
+all : $(LIB_NAME)
+
+$(LIB_NAME) : $(OBJS)
+	$(AR) $(ARFLAGS) $(LIB_NAME) @$(RESPONSE_FILE)
+
+install ::
+	$(INSTALL) $(LIB_NAME)    $(LIB_DIR)
+	$(INSTALL) $(HEADER_NAME) $(INC_DIR)
+
+clean :
+	$(RM) $(LIB_NAME) *.obj *~ *.bak *.tds
+
+#
+# add dependency relations of object files when adding new functions to this library
+#
+isprefix.obj :	libshun.h
+isfile.obj :	libshun.h
+getparam.obj :	libshun.h
+errexit.obj :
+cutnline.obj :
+getlabel.obj :	libshun.h
+exp_tab.obj :
+getcpath.obj :
+strcpy.obj :
+
